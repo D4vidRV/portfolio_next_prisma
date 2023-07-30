@@ -6,11 +6,13 @@ async function getProject(id: String) {
   const query = `*[_type == "project" && _id == "${id}"][0] {
     title,
     overview,
+    overview_es,
     link,
     _id,
     "imageUrl": image.asset->url,
     "features": features[]{
         "description": description,
+        "description_es": description_es,
         "imageUrl": image.asset->url
     }
     }`;
@@ -45,8 +47,11 @@ export default async function Details({ params }: { params: { id: string } }) {
         </a>
       </div>
 
-      {features.map((feature) => (
-        <div className="items-center space-y-2 xl:grid xl:grid-cols-8 xl:gap-x-8 xl:space-y-0 pb-8">
+      {features.map((feature, index) => (
+        <div
+          key={index}
+          className="items-center space-y-2 xl:grid xl:grid-cols-8 xl:gap-x-8 xl:space-y-0 pb-8"
+        >
           <div className="flex flex-col items-center pt-8 xl:col-span-2">
             <div className="h-80 w-full relative">
               <Image

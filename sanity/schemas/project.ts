@@ -12,8 +12,13 @@ export const project = defineType({
     }),
     defineField({
       name: 'overview',
-      type: 'string',
+      type: 'text',
       title: 'Small Overview',
+    }),
+    defineField({
+      name: 'overview_es',
+      type: 'text',
+      title: 'Small Overview ES',
     }),
     defineField({
       name: 'image',
@@ -29,7 +34,8 @@ export const project = defineType({
           type: 'object',
           name: 'feature',
           fields: [
-            {type: 'string', name: 'description'},
+            {title: 'Description', type: 'text', name: 'description'},
+            {title: 'Description ES',type: 'text', name: 'description_es'},
             {type: 'image', name: 'image'},
           ],
         }),
@@ -39,6 +45,11 @@ export const project = defineType({
       name: 'link',
       type: 'string',
       title: 'Link',
+    }),
+    defineField({
+      name: 'github',
+      type: 'string',
+      title: 'Github',
     }),
   ],
 })

@@ -7,11 +7,13 @@ async function getProjects() {
   const query = `*[_type == "project"] {
     title,
     overview,
+    overview_es,
     link,
     _id,
     "imageUrl": image.asset->url,
     "features": features[]{
       "description": description,
+      "description_es": description_es,
       "imageUrl": image.asset->url
     }
   }`;
