@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "../libs/sanity";
+import { client } from "@/app/libs/sanity";
 import { IProject } from "@/interfaces/projects";
+import { getTranslator } from "next-intl/server";
+import { useLocale } from "next-intl";
 
 async function getProjects() {
   const query = `*[_type == "project"] {
@@ -9,6 +11,7 @@ async function getProjects() {
     overview,
     overview_es,
     link,
+    github,
     _id,
     "imageUrl": image.asset->url,
     "features": features[]{
@@ -24,14 +27,21 @@ async function getProjects() {
 
 export const revalidate = 60;
 
-export default async function Projects() {
+export default async function Projects({
+  params: { locale },
+}: {
+  params: any;
+}) {
   const data: IProject[] = await getProjects();
+  const t = await getTranslator(locale, "projects");
+  const localeLang = useLocale();
+  // console.log(localeLang);
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Proyectos
+          {t("title")}
         </h1>
       </div>
 
@@ -50,23 +60,35 @@ export default async function Projects() {
               />
             </div>
             <div className="p-4 sm:p-6">
-              <Link href={`projects/${project._id}`}>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                  {project.title}
-                </h3>
-              </Link>
+              {!project.features ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-500"
+                >
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                </a>
+              ) : (
+                <Link href={`projects/${project._id}`}>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                </Link>
+              )}
 
               <p className=" line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                {project.overview}
+                {localeLang == "en" ? project.overview : project.overview_es}
               </p>
 
               {!project.features ? (
                 <a
-                  href={project.link}
+                  href={project.github}
                   target="_blank"
                   className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-500"
                 >
-                  Ver más
+                  {t("viewMoreButtonText")}
                   <span className="block transition-all group-hover:ms-0.5">
                     &rarr;
                   </span>
@@ -76,7 +98,7 @@ export default async function Projects() {
                   href={`projects/${project._id}`}
                   className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-teal-500"
                 >
-                  Ver más
+                  {t("viewMoreButtonText")}
                   <span className="block transition-all group-hover:ms-0.5">
                     &rarr;
                   </span>

@@ -1,0 +1,19 @@
+{
+  "Index": {
+    "title": "Inicio",
+    "occupation": "Desarrollador Full Stack",
+    "p1": "Hola, mi nombre es David, tengo 29 años, soy desarrollador Full Stack y vivo en Costa Rica.",
+    "p2": "Me apasiona el mundo de la tecnologia, la programación y colaborar en la creación de productos digitales que puedan llegar y facilitarle la vida a muchas personas, me mantengo en constante aprendizaje e investigando sobre diversas tecnologias y tendencias en el mundo de la programacion.",
+    "downloadButtonText": "DESCARGAR CV",
+    "skills": "Habilidades"
+  },
+  "projects": {
+    "tab-title-projects": "Projects",
+    "title": "Proyectos",
+    "viewMoreButtonText": "Ver más"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "projects": "Proyectos"
+  }
+}

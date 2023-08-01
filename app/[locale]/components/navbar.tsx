@@ -1,24 +1,33 @@
 "use client";
 import { Disclosure } from "@headlessui/react";
-import Link from "next/link";
+import Link from "next-intl/link";
 import { usePathname } from "next/navigation";
 import Themebutton from "./themebutton";
+import Image from "next/image";
+import UK from "@/public/gb.svg";
+import ES from "@/public/es.svg";
+import { useTranslations } from "next-intl";
 
 interface Route {
   name: string;
   path: string;
 }
 
-const routes: Route[] = [
-  {
-    name: "Inicio",
-    path: "/",
-  },
-  {
-    name: "Proyectos",
-    path: "/projects",
-  },
-];
+function getRoutes() {
+  const t = useTranslations("navbar");
+
+  const routes: Route[] = [
+    {
+      name: t("home"),
+      path: "/",
+    },
+    {
+      name: t("projects"),
+      path: "/projects",
+    },
+  ];
+  return routes;
+}
 
 export default function Navbar() {
   let pathname = usePathname() || "/";
@@ -38,8 +47,9 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
-                  {routes.map((route) => (
+                  {getRoutes().map((route, index) => (
                     <Link
+                      key={index}
                       href={route.path}
                       prefetch
                       className={`${
@@ -51,11 +61,47 @@ export default function Navbar() {
                       {route.name}
                     </Link>
                   ))}
+                  <Link href="/" locale="en">
+                    <Image
+                      className="rounded-full"
+                      src={UK}
+                      alt="UK flag"
+                      width={30}
+                      height={30}
+                    />
+                  </Link>
+                  <Link href="/" locale="es">
+                    <Image
+                      className="rounded-full"
+                      src={ES}
+                      alt="UK flag"
+                      width={30}
+                      height={30}
+                    />
+                  </Link>
                   <Themebutton />
                 </div>
               </div>
 
-              <div className="-mr-2 flex items-center sm:hidden">
+              <div className="flex justify-between w-full items-center sm:hidden">
+                <Link href="/" locale="en">
+                  <Image
+                    className="rounded-full"
+                    src={UK}
+                    alt="UK flag"
+                    width={30}
+                    height={30}
+                  />
+                </Link>
+                <Link href="/" locale="es">
+                  <Image
+                    className="rounded-full "
+                    src={ES}
+                    alt="UK flag"
+                    width={30}
+                    height={30}
+                  />
+                </Link>
                 <Themebutton />
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 dark:hover:bg-gray-800">
                   {open ? (
@@ -95,8 +141,9 @@ export default function Navbar() {
           </div>
           <Disclosure.Panel className="sm:hidden">
             <div className="pt-2 pb-3 space-y-1">
-              {routes.map((route) => (
+              {getRoutes().map((route, index) => (
                 <Link
+                  key={index}
                   href={route.path}
                   prefetch
                   className={`${

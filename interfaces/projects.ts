@@ -9,6 +9,7 @@ export interface IProject {
   overview: string;
   overview_es: string;
   link: string;
+  github: string;
   _id: string;
   imageUrl: string;
   features: Feature[];

@@ -1,0 +1,19 @@
+{
+  "Index": {
+    "title": "Home",
+    "occupation": "Full Stack Developer",
+    "p1": "Hello, my name is David, i am 29 years old and i am a Full Stack developer based in Costa Rica.",
+    "p2": "I am passionate about the world of technology, programming, and collaborating in the creation of digital products that can reach and make life easier for many people, i am constantly learning and researching various technologies and trends in the programming world.",
+    "downloadButtonText": "DOWNLOAD RESUME",
+    "skills": "Skills"
+  },
+  "projects": {
+    "tab-title-projects": "Projects",
+    "title": "Projects",
+    "viewMoreButtonText": "View more"
+  },
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects"
+  }
+}

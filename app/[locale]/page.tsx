@@ -2,6 +2,8 @@ import React from "react";
 import Me from "@/public/me1.png";
 import Image from "next/image";
 import { Tooltip } from "./components/tooltip";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 interface technologyLogo {
   logo: React.JSX.Element;
@@ -9,6 +11,105 @@ interface technologyLogo {
 }
 
 const technologyLogos: technologyLogo[] = [
+  {
+    logo: (
+      <svg
+        width="1rem"
+        height="1rem"
+        className="w-16 h-16 text-teal-500 hover:text-teal-600"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill="none"
+          stroke="#14b8a6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+        >
+          <path d="M17.5 19H22m0 0l-2.5-2.5M22 19l-2.5 2.5M12 2L9.5 4.5L12 7" />
+          <path d="M10.5 4.5a7.5 7.5 0 0 1 0 15H2" />
+          <path d="M6.756 5.5A7.497 7.497 0 0 0 3 12c0 1.688.558 3.246 1.5 4.5" />
+        </g>
+      </svg>
+    ),
+    name: "Agile",
+  },
+  {
+    logo: (
+      <svg
+        width="1rem"
+        height="1rem"
+        className="w-16 h-16 text-teal-500 hover:text-teal-600"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#14b8a6"
+          d="M10.657 23.994h-9.45A1.212 1.212 0 0 1 0 22.788v-9.18h.071c5.784 0 10.504 4.65 10.586 10.386Zm7.606 0h-4.045C14.135 16.246 7.795 9.977 0 9.942V6.038h.071c9.983 0 18.121 8.044 18.192 17.956Zm4.53 0h-.97C21.754 12.071 11.995 2.407 0 2.372v-1.16C0 .55.544.006 1.207.006h7.64C15.733 2.49 21.257 7.789 24 14.508v8.291c0 .663-.544 1.195-1.207 1.195ZM16.713.006h6.092A1.19 1.19 0 0 1 24 1.2v5.914c-.91-1.242-2.046-2.65-3.158-3.762C19.588 2.11 18.122.987 16.714.005Z"
+        />
+      </svg>
+    ),
+    name: "MQTT",
+  },
+  {
+    logo: (
+      <svg
+        width="1rem"
+        height="1rem"
+        viewBox="0 0 512 208"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-16 h-16 text-teal-500 hover:text-teal-600"
+      >
+        <defs>
+          <linearGradient id="logosGrpc0" x1="100%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#72C9C9" />
+            <stop offset="100%" stop-color="#02B0AD" />
+          </linearGradient>
+          <linearGradient id="logosGrpc1" x1="100%" x2="0%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#03B6B4" />
+            <stop offset="100%" stop-color="#74CBCA" />
+          </linearGradient>
+        </defs>
+        <path
+          fill="#244B5A"
+          d="M56.678 179.868a40.246 40.246 0 0 0 14.42 11.938a43.222 43.222 0 0 0 19.768 4.487a42.464 42.464 0 0 0 16.234-2.769a28.18 28.18 0 0 0 10.79-7.544a29.098 29.098 0 0 0 5.922-11.174a49.903 49.903 0 0 0 1.814-13.655v-16.043h-.381a34.445 34.445 0 0 1-14.9 12.988a45.958 45.958 0 0 1-18.525 3.82a48.184 48.184 0 0 1-18.239-3.438a46.394 46.394 0 0 1-14.803-9.455a43.5 43.5 0 0 1-9.932-14.421a45.253 45.253 0 0 1-3.628-18.144a47.463 47.463 0 0 1 3.439-18.144a46.64 46.64 0 0 1 9.453-14.706a42.642 42.642 0 0 1 14.325-9.837a46.147 46.147 0 0 1 18.24-3.533c2.849.017 5.691.272 8.498.763a40.246 40.246 0 0 1 8.977 2.675a41.352 41.352 0 0 1 17.095 13.753h.38v-14.9h12.608v88.622a71.906 71.906 0 0 1-1.815 15.47a38.212 38.212 0 0 1-7.067 15.088a40.24 40.24 0 0 1-14.611 11.462c-6.24 3.054-14.39 4.581-24.448 4.581a61.406 61.406 0 0 1-23.874-4.391A55.485 55.485 0 0 1 47.32 189.8l9.357-9.933Zm2.291-63.79a34.222 34.222 0 0 0 2.58 13.272a34.87 34.87 0 0 0 7.065 10.886a34.172 34.172 0 0 0 10.505 7.45a30.912 30.912 0 0 0 13.083 2.77a35.036 35.036 0 0 0 24.065-9.454a30.428 30.428 0 0 0 7.354-10.793a34.762 34.762 0 0 0 2.388-14.132a38.025 38.025 0 0 0-2.292-13.275a31.883 31.883 0 0 0-6.686-10.886a32.304 32.304 0 0 0-10.695-7.449a34.815 34.815 0 0 0-14.134-2.77a30.94 30.94 0 0 0-13.083 2.77a34.266 34.266 0 0 0-10.505 7.449a34.947 34.947 0 0 0-7.067 10.886a34.249 34.249 0 0 0-2.578 13.275Zm130.638 45.838h-13.75V26.69h41.636c13.751 0 24.606 2.992 32.564 8.977c7.957 5.986 11.936 15.027 11.938 27.121a33.791 33.791 0 0 1-8.881 23.778c-5.922 6.432-14.485 10.156-25.689 11.173l38.963 64.177h-16.809l-37.05-62.838h-22.92l-.002 62.838Zm0-75.444h24.448a54.954 54.954 0 0 0 15.566-1.91a28.907 28.907 0 0 0 10.219-5.06a18.482 18.482 0 0 0 5.538-7.449a24.716 24.716 0 0 0 1.719-9.265a24.212 24.212 0 0 0-1.72-9.07a19.22 19.22 0 0 0-5.537-7.546a27.013 27.013 0 0 0-10.22-5.062a57.796 57.796 0 0 0-15.565-1.813h-24.448v47.175ZM290.068 26.69h39.346c13.75 0 24.605 2.993 32.563 8.978c7.957 5.986 11.936 15.027 11.938 27.122c0 12.098-3.98 21.17-11.938 27.215c-7.958 6.05-18.812 9.074-32.563 9.073h-25.593v62.838h-13.753V26.69Zm13.755 59.784h22.155a54.969 54.969 0 0 0 15.566-1.911a28.923 28.923 0 0 0 10.218-5.06a18.49 18.49 0 0 0 5.538-7.449a24.696 24.696 0 0 0 1.72-9.264a24.192 24.192 0 0 0-1.72-9.071a19.227 19.227 0 0 0-5.538-7.546a27.027 27.027 0 0 0-10.218-5.061a57.81 57.81 0 0 0-15.566-1.814h-22.157l.001 47.176ZM512 140.524a52.447 52.447 0 0 1-8.497 9.741a53.718 53.718 0 0 1-11.556 7.925a65.907 65.907 0 0 1-14.037 5.254a64.865 64.865 0 0 1-15.95 1.91a72.337 72.337 0 0 1-27.979-5.348a67.123 67.123 0 0 1-37.149-37.244a74.005 74.005 0 0 1-5.347-28.46a74.01 74.01 0 0 1 5.347-28.458a67.115 67.115 0 0 1 37.15-37.242a72.32 72.32 0 0 1 27.978-5.348a68.361 68.361 0 0 1 25.212 4.964a50.855 50.855 0 0 1 21.581 16.427l-12.03 8.977a32.925 32.925 0 0 0-5.732-6.495a41.835 41.835 0 0 0-8.306-5.729a51.866 51.866 0 0 0-10.029-4.01a38.797 38.797 0 0 0-10.696-1.529a54.855 54.855 0 0 0-23.3 4.775a52.918 52.918 0 0 0-17.475 12.795A56.294 56.294 0 0 0 410.2 72.053a66.723 66.723 0 0 0 0 44.5a56.27 56.27 0 0 0 10.984 18.622a52.853 52.853 0 0 0 17.475 12.796a54.796 54.796 0 0 0 23.3 4.777a59.045 59.045 0 0 0 10.6-.956a44.027 44.027 0 0 0 10.315-3.246a39.027 39.027 0 0 0 9.55-6.21a46.028 46.028 0 0 0 8.307-9.833L512 140.524Z"
+        />
+        <path
+          fill="url(#logosGrpc0)"
+          d="M10.392 10.392h50.18v50.18h-50.18z"
+          transform="rotate(-135.213 35.482 35.482)"
+        />
+        <path
+          fill="url(#logosGrpc1)"
+          d="M117.73 20.346h29.433v29.433H117.73z"
+          transform="rotate(-135.213 132.446 35.063)"
+        />
+        <path
+          fill="#244B5A"
+          d="M36.909 14.027L15.502 35.595l21.567 21.407l18.245-.067l-19.133-18.98l94.477-.35l-8.28 8.336l9.123-.033l10.704-10.784l-10.784-10.703l-9.123.033l8.343 8.277l-94.477.35l18.99-19.121z"
+        />
+      </svg>
+    ),
+    name: "gRPC",
+  },
+  {
+    logo: (
+      <svg
+        width="1rem"
+        height="1rem"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-16 h-16 text-teal-500 hover:text-teal-600"
+      >
+        <path
+          fill="#14b8a6"
+          d="M1 15V9h1.5v2h2V9H6v6H4.5v-2.5h-2V15H1Zm7.5 0v-4.5H7V9h4.5v1.5H10V15H8.5Zm5.5 0v-4.5h-1.5V9H17v1.5h-1.5V15H14Zm4 0V9h3.5q.6 0 1.05.45T23 10.5v1q0 .6-.45 1.05T21.5 13h-2v2H18Zm1.5-3.5h2v-1h-2v1Z"
+        />
+      </svg>
+    ),
+    name: "Http",
+  },
   {
     logo: (
       <svg
@@ -186,12 +287,16 @@ const technologyLogos: technologyLogo[] = [
 ];
 
 const Home = () => {
+  const locale = useLocale();
+  const t = useTranslations("Index");
+  // console.log(locale);
+
   return (
     <>
       <div className="divide-y divide-gray-100 dark:divide-gray-700">
         <div className="space-y-2 pt-5 pb-8 md:space-x-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-13">
-            Inicio
+            {t("title")}
           </h1>
         </div>
 
@@ -206,11 +311,12 @@ const Home = () => {
               David Ramirez
             </h3>
             <p className="text-gray-500 dark:text-gray-300 text-center">
-              Desarrollador Full Stack
+              {t("occupation")}
             </p>
             {/* CONTACTS LINKS ICONS */}
             <div className="flex space-x-5 pt-6">
-              <a href="" target="_blank">
+              {/* Github */}
+              <a href="https://github.com/D4vidRV" target="_blank">
                 <svg
                   viewBox="0 0 1024 1024"
                   fill="currentColor"
@@ -219,7 +325,11 @@ const Home = () => {
                   <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" />
                 </svg>
               </a>
-              <a href="" target="_blank">
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/david-ram%C3%ADrez-villalobos-36b627220/"
+                target="_blank"
+              >
                 <svg
                   viewBox="0 0 1024 1024"
                   fill="currentColor"
@@ -228,7 +338,8 @@ const Home = () => {
                   <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1168.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z" />
                 </svg>
               </a>
-              <a href="" target="_blank">
+              {/* Email */}
+              <a href="mailto:davidramirezcr.dev@gmail.com" target="_blank">
                 <svg
                   viewBox="0 0 1024 1024"
                   fill="currentColor"
@@ -237,7 +348,8 @@ const Home = () => {
                   <path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-80.8 108.9L531.7 514.4c-7.8 6.1-18.7 6.1-26.5 0L189.6 268.9A7.2 7.2 0 01194 256h648.8a7.2 7.2 0 014.4 12.9z" />
                 </svg>
               </a>
-              <a href="" target="_blank">
+              {/* Twitter */}
+              <a href="https://twitter.com/Avalon_CR" target="_blank">
                 <svg
                   viewBox="0 0 1024 1024"
                   fill="currentColor"
@@ -250,24 +362,19 @@ const Home = () => {
           </div>
 
           <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
-            <p>
-              Hola, mi nombre es David, tengo 29 años, soy desarrollador Full
-              Stack y vivo en Costa Rica.
-            </p>
-            <p>
-              Me apasiona el mundo de la tecnologia, la programación y colaborar
-              en la creación de productos digitales que puedan llegar y
-              facilitarle la vida a muchas personas, me mantengo en constante
-              aprendizaje e investigando sobre diversas tecnologias y tendencias
-              en el mundo de la programacion.
-            </p>
+            <p>{t("p1")}</p>
+            <p>{t("p2")}</p>
             <a
               className="no-underline relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
-              href="https://drive.google.com/uc?id=10OzSWoo9vXitbicwS-y0Y445roaqTh-4&export=download&authuser=0"
+              href={
+                locale == "en"
+                  ? "https://drive.google.com/uc?id=1WcH5NQqcmxTMy2TgxLNg0DlFfTVpBIPC&export=download&authuser=0"
+                  : "https://drive.google.com/uc?id=10OzSWoo9vXitbicwS-y0Y445roaqTh-4&export=download&authuser=0"
+              }
               download={"david_ramirez_cv.pdf"}
             >
               <span className="flex relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Descargar CV
+                {t("downloadButtonText")}
                 <svg
                   className="ml-2 fill-current w-4 h-4 mr-2"
                   xmlns="http://www.w3.org/2000/svg"
@@ -282,12 +389,12 @@ const Home = () => {
       </div>
       <div className="flex flex-col items-center mt-12">
         <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
-          Stack de tecnologias
+          {t("skills")}
         </h3>
         <div className="p-4 grid grid-cols-4 gap-x-12 sm:grid-cols-6 xl:grid-cols-10">
           {technologyLogos
-            .map((technology) => (
-              <div className="mb-8">
+            .map((technology, index) => (
+              <div key={index} className="mb-8">
                 <Tooltip tooltip={technology.name}>
                   <div className="my-3">{technology.logo}</div>
                 </Tooltip>

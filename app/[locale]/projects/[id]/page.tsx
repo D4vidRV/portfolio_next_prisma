@@ -1,6 +1,7 @@
 import { client } from "@/app/libs/sanity";
 import { IProject } from "@/interfaces/projects";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 async function getProject(id: String) {
   const query = `*[_type == "project" && _id == "${id}"][0] {
@@ -8,6 +9,7 @@ async function getProject(id: String) {
     overview,
     overview_es,
     link,
+    github,
     _id,
     "imageUrl": image.asset->url,
     "features": features[]{
@@ -22,21 +24,29 @@ async function getProject(id: String) {
 
 export const revalidate = 60;
 
-export default async function Details({ params }: { params: { id: string } }) {
+export default async function Details({ params }: { params: any }) {
   const { id } = params;
   const project: IProject = await getProject(id);
-  const { features } = project;
-  //   console.log("FEATURES!!!!!!!!!!!");
+  const features = project?.features ?? [];
+  const locale = useLocale();
 
-  //   console.log({ features });
+  if (!project) {
+    return (
+      <div className="mt-20 text-center min-h-ful">
+        <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          404 Project not found
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="flex space-y2 pt-6 pb-8 md:space-y-5">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          {project.title}
+          {project?.title ?? ""}
         </h1>
-        <a href={project.link} target="_blank" className="pl-8">
+        <a href={project?.github ?? "#"} target="_blank" className="pl-8">
           <svg
             viewBox="0 0 1024 1024"
             fill="currentColor"
@@ -63,7 +73,7 @@ export default async function Details({ params }: { params: { id: string } }) {
             </div>
           </div>
           <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-6">
-            {feature.description}
+            {locale == "en" ? feature.description : feature.description_es}
           </div>
         </div>
       ))}
