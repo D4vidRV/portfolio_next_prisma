@@ -13,9 +13,8 @@ interface Route {
   path: string;
 }
 
-function getRoutes() {
+export default function Navbar() {
   const t = useTranslations("navbar");
-
   const routes: Route[] = [
     {
       name: t("home"),
@@ -26,10 +25,6 @@ function getRoutes() {
       path: "/projects",
     },
   ];
-  return routes;
-}
-
-export default function Navbar() {
   let pathname = usePathname() || "/";
   return (
     <Disclosure as="nav">
@@ -47,7 +42,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
-                  {getRoutes().map((route, index) => (
+                  {routes.map((route, index) => (
                     <Link
                       key={index}
                       href={route.path}
@@ -141,7 +136,7 @@ export default function Navbar() {
           </div>
           <Disclosure.Panel className="sm:hidden">
             <div className="pt-2 pb-3 space-y-1">
-              {getRoutes().map((route, index) => (
+              {routes.map((route, index) => (
                 <Link
                   key={index}
                   href={route.path}

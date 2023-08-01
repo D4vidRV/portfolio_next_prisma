@@ -63,12 +63,12 @@ const technologyLogos: technologyLogo[] = [
       >
         <defs>
           <linearGradient id="logosGrpc0" x1="100%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#72C9C9" />
-            <stop offset="100%" stop-color="#02B0AD" />
+            <stop offset="0%" stopColor="#72C9C9" />
+            <stop offset="100%" stopColor="#02B0AD" />
           </linearGradient>
           <linearGradient id="logosGrpc1" x1="100%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#03B6B4" />
-            <stop offset="100%" stop-color="#74CBCA" />
+            <stop offset="0%" stopColor="#03B6B4" />
+            <stop offset="100%" stopColor="#74CBCA" />
           </linearGradient>
         </defs>
         <path
