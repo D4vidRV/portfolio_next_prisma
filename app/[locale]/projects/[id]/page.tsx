@@ -1,7 +1,7 @@
 import { client } from "@/app/libs/sanity";
 import { IProject } from "@/interfaces/projects";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { getTranslator } from "next-intl/server";
 
 async function getProject(id: String) {
   const query = `*[_type == "project" && _id == "${id}"][0] {
@@ -21,14 +21,23 @@ async function getProject(id: String) {
   const data = await client.fetch(query);
   return data;
 }
+interface MyComponentProps {
+  // Define los tipos para los parámetros que esperas recibir
+  params: {
+    id: string;
+    locale: string;
+    // Agrega otros tipos si esperas recibir más parámetros
+  };
+}
 
 export const revalidate = 60;
 
-export default async function Details({ params }: { params: any }) {
+export default async function Details({ params }: MyComponentProps) {
   const { id } = params;
+  const { locale } = params;
   const project: IProject = await getProject(id);
   const features = project?.features ?? [];
-  const locale = useLocale();
+  const t = await getTranslator(locale, "projects");
 
   if (!project) {
     return (

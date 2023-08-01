@@ -3,7 +3,6 @@ import Link from "next/link";
 import { client } from "@/app/libs/sanity";
 import { IProject } from "@/interfaces/projects";
 import { getTranslator } from "next-intl/server";
-import { useLocale } from "next-intl";
 
 async function getProjects() {
   const query = `*[_type == "project"] {
@@ -34,8 +33,8 @@ export default async function Projects({
 }) {
   const data: IProject[] = await getProjects();
   const t = await getTranslator(locale, "projects");
-  const localeLang = useLocale();
-  // console.log(localeLang);
+  console.log(`LOCALEEEEEEEEEEEE!!`);
+  console.log(locale);
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -79,7 +78,7 @@ export default async function Projects({
               )}
 
               <p className=" line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                {localeLang == "en" ? project.overview : project.overview_es}
+                {locale == "en" ? project.overview : project.overview_es}
               </p>
 
               {!project.features ? (
