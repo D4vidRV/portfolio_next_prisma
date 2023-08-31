@@ -10,7 +10,8 @@
   "projects": {
     "tab-title-projects": "Projects",
     "title": "Proyectos",
-    "viewMoreButtonText": "Ver más"
+    "viewMoreButtonText": "Ver más",
+    "goToSiteButtonText": "Ir al sitio"
   },
   "navbar": {
     "home": "Inicio",
