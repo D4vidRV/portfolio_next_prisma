@@ -13,6 +13,22 @@ interface technologyLogo {
 const technologyLogos: technologyLogo[] = [
   {
     logo: (
+      <svg width="128" height="128" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-teal-500 hover:text-teal-600">
+    <path fill="#14b8a6" d="m12 2.5l8.84 3.15l-1.34 11.7L12 21.5l-7.5-4.15l-1.34-11.7L12 2.5m0 2.1L6.47 17h2.06l1.11-2.78h4.7L15.45 17h2.05L12 4.6m1.62 7.9h-3.23L12 8.63l1.62 3.87Z"/>
+</svg>
+    ),
+    name: "Angular",
+  },
+  {
+    logo: (
+      <svg width="1rem" height="1rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 text-teal-500 hover:text-teal-600">
+      <path fill="none" stroke="#14b8a6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9a3 3 0 0 0-3-3h-.5A3.5 3.5 0 0 0 3 9.5v5A3.5 3.5 0 0 0 6.5 18H7a3 3 0 0 0 3-3m6-8l-1 10m5-10l-1 10m-5-7h7.5m-.5 4h-7.5"/>
+  </svg>
+    ),
+    name: "C#",
+  },
+  {
+    logo: (
       <svg
         width="1rem"
         height="1rem"
