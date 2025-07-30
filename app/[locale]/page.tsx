@@ -2,8 +2,8 @@ import React from "react";
 import Me from "@/public/me1.png";
 import Image from "next/image";
 import { Tooltip } from "./components/tooltip";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { getCurrentAge } from "../../utils/age";
 
 interface technologyLogo {
   logo: React.JSX.Element;
@@ -305,6 +305,7 @@ const technologyLogos: technologyLogo[] = [
 const Home = () => {
   const locale = useLocale();
   const t = useTranslations("Index");
+  const currentAge = getCurrentAge();
   // console.log(locale);
 
   return (
@@ -378,7 +379,7 @@ const Home = () => {
           </div>
 
           <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
-            <p>{t("p1")}</p>
+            <p>{t("p1", { age: currentAge })}</p>
             <p>{t("p2")}</p>
             <a
               className="no-underline relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
